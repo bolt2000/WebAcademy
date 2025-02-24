@@ -4,7 +4,7 @@ stages:
 sync_to_github:
   stage: push
   script:
-    - git remote add github https://oauth2:${GITHUB_TOKEN}@github.com/bolt2000/repository.git || true
-    - git push --force github main
-  only:
-    - main
+    - git remote add github https://oauth2:${GITHUB_TOKEN}@github.com/username/repository.git || true
+    - git push --force github $CI_COMMIT_BRANCH
+  rules:
+    - if: '$CI_COMMIT_BRANCH'
